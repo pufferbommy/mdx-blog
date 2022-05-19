@@ -1,0 +1,44 @@
+---
+title: 'Tip: Abort a fetch request in JavaScript'
+date: 'May 19, 2022'
+---
+
+## The Fetch API is nowadays the de facto way to send asynchronous requests in JavaScript.
+
+การดึงข้อมูล API ในทุกวันนี้คือการส่ง request แบบ asynchronous ใน JavaScript
+
+## This is in part due to the fact that the fetch() method accepts a multitude of useful options.
+
+ส่วนนี้เป็นส่วนหนึ่งของความสำคัญของการใช้งานฟังก์ชั่น fetch() ซึ่งมีความสามารถมากมาย
+
+## One of these is the signal option, which can be used to abort a request.
+
+หนึ่งในความสามารถของฟังก์ชั่น fetch() คือ signal option ซึ่งสามารถใช้ที่จะยกเลิกการดึงข้อมูลได้
+
+## To create a valid value for this option, you can use AbortController.signal after creating a new instance of AbortController.
+
+สำหรับการสร้าง option ก็คือ เราต้องใช้ AbortController.signal หลังจากสร้างออบเจ็กต์ใหม่ของ AbortController
+
+## Then, you can use AbortController.abort() to cancel the request at any time.
+
+หลังจากนั้น เราสามารถใช้ AbortController.abort() เพื่อที่จะ cancel การ request ในเวลาใดก็ตาม
+
+```
+// Create the AbortController
+// สร้างออบเจ็กต์ตัวใหม่จาก class AbortController
+const controller = new AbortController();
+const { signal } = controller;
+
+// Perform the request
+// ดำเนินการ request
+fetch('https://my.site.com/data', { signal }).then(res => console.log(res));
+
+// Abort the request
+// ยกเลิกการ request
+controller.abort();
+
+```
+
+## This is particularly useful in scenarios where a request takes too long or the response is no longer needed.
+
+สิ่งนี้มีประโยชน์มากในสถานการณ์ที่ request ใช้เวลามากเกินไป หรือว่าไม่ต้องการ response อีกต่อไป

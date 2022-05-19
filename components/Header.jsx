@@ -3,9 +3,9 @@ import Container from './Container'
 
 const Header = () => {
   return (
-    <header className="h-[60px] px-4">
+    <div className="border-b border-b-black/10">
       <Container>
-        <div className="flex h-full justify-between items-center">
+        <div className="flex h-[60px] justify-between items-center">
           <Link href="/">
             <h1 className="font-semibold cursor-pointer hover:text-pink-400 transition-colors duration-200">
               Pufferbommy
@@ -21,7 +21,7 @@ const Header = () => {
           </ul>
         </div>
       </Container>
-    </header>
+    </div>
   )
 }
 
